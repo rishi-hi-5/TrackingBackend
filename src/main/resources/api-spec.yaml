@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: Transport Tracking API
+  description: API documentation for the Transport Tracking system, including barcode management.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local server
+tags:
+  - name: version
+    description: Application version management
+  - name: barcodes
+    description: Barcode management
+
+
+paths:
+  /api/version:
+    get:
+      summary: Get Application Version
+      description: Retrieve the current version of the application.
+      operationId: getVersion
+      responses:
+        '200':
+          description: Application version retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  version:
+                    type: string
+                    example: "1.0.0"
+  /barcodes/generateUnique:
+    post:
+      tags:
+        - barcodes  
+      summary: Generate a unique barcode image based on the provided data.
+      description: Accepts barcode data in the request body and generates a barcode image in PNG format.
+      operationId: generateUniqueBarcode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                barcodeData:
+                  type: string
+                  description: The data that will be encoded into the barcode.
+                  example: "ABC123456"
+                name:
+                  type: string
+                  description: An optional name or identifier for the barcode.
+                  example: "Product1"
+      responses:
+        '200':
+          description: Successfully generated a unique barcode image.
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad Request - Barcode data is required.
+        '500':
+          description: Internal server error.
