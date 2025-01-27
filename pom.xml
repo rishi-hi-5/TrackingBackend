@@ -122,11 +122,11 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>7.0.1.Final</version>
 		</dependency>
-		<!-- Spring Boot Web Starter -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+<!--		&lt;!&ndash; Spring Boot Web Starter &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-web</artifactId>-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.openapitools</groupId>
@@ -224,11 +224,10 @@
 							<configOptions>
 								<openApiNullable>false</openApiNullable>
 								<delegatePattern>true</delegatePattern> <!-- Delegate pattern -->
-								<reactive>true</reactive>
+								<reactive>true</reactive> <!-- Ensure this is set to true -->
 								<interfaceOnly>false</interfaceOnly> <!-- Generate only interfaces -->
 								<useTags>true</useTags>          <!-- Use tags for API grouping -->
 								<useJakartaEe>true</useJakartaEe>
-								<jakarta-validation>true</jakarta-validation>
 							</configOptions>
 
 							<skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged> <!-- Skip if spec
@@ -236,6 +235,7 @@
 							<additionalProperties>
 								<java8>true</java8> <!-- Ensure Java 8 or higher compatibility -->
 								<jakarta-validation>true</jakarta-validation>
+								<reactive>true</reactive> <!-- Ensure this is set to true -->
 
 								<jakarta>true</jakarta>  <!-- Convert to Jakarta (Spring Boot 3.x and
 								above) -->
