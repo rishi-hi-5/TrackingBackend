@@ -64,3 +64,31 @@ paths:
           description: Bad Request - Barcode data is required.
         '500':
           description: Internal server error.
+  /barcodes/save:
+    post:
+      tags:
+        - Barcodes
+      summary: Save barcode metadata and image
+      description: Endpoint to save barcode metadata and the image
+      operationId: saveBarcode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                metadata:
+                  type: object
+                  description: JSON object containing the barcode metadata
+                image:
+                  type: string
+                  format: byte
+                  description: Base64-encoded image data
+      responses:
+        '200':
+          description: Successfully saved the barcode
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal server error

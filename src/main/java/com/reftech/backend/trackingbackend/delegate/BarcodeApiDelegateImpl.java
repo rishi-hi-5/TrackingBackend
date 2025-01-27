@@ -2,10 +2,12 @@ package com.reftech.backend.trackingbackend.delegate;
 
 import com.reftech.backend.trackingbackend.api.BarcodesApiDelegate;
 import com.reftech.backend.trackingbackend.api.GenerateUniqueBarcodeRequest;
+import com.reftech.backend.trackingbackend.api.SaveBarcodeRequest;
 import com.reftech.backend.trackingbackend.service.BarcodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -25,5 +27,14 @@ public class BarcodeApiDelegateImpl implements BarcodesApiDelegate {
                 .flatMap(byteArray->Mono.just(new ByteArrayResource(byteArray)))
                 .map(byteArrayResource -> ResponseEntity.ok().contentType(MediaType.IMAGE_PNG)
                         .body(byteArrayResource));
+    }
+
+
+    @Override
+    public Mono<ResponseEntity<Void>> saveBarcode(Mono<SaveBarcodeRequest> saveBarcodeRequest,
+                                                   ServerWebExchange exchange) {
+
+        return barcodeService.saveBarcode(saveBarcodeRequest)
+                .map(ResponseEntity::ok);
     }
 }
