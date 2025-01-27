@@ -7,11 +7,9 @@ import com.reftech.backend.trackingbackend.service.BarcodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
@@ -34,7 +32,7 @@ public class BarcodeApiDelegateImpl implements BarcodesApiDelegate {
     public Mono<ResponseEntity<Void>> saveBarcode(Mono<SaveBarcodeRequest> saveBarcodeRequest,
                                                    ServerWebExchange exchange) {
 
-        return barcodeService.saveBarcode(saveBarcodeRequest)
+        return barcodeService.saveOrUpdateBarcode(saveBarcodeRequest)
                 .map(ResponseEntity::ok);
     }
 }

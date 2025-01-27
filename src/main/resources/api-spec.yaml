@@ -92,3 +92,67 @@ paths:
           description: Invalid input
         '500':
           description: Internal server error
+  /barcodes/find/{name}:
+    get:
+      tags:
+        - Barcodes
+      summary: Find a barcode by its name
+      description: Endpoint to find a barcode by its name
+      operationId: findBarcodeByName
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: The name of the barcode to find
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully found the barcode
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BarcodeMetaData'
+        '404':
+          description: Barcode not found
+        '500':
+          description: Internal server error
+
+  /barcodes/delete/{name}:
+    delete:
+      tags:
+        - Barcodes
+      summary: Delete a barcode by its name
+      description: Endpoint to delete a barcode by its name
+      operationId: deleteBarcodeByName
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: The name of the barcode to delete
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully deleted the barcode
+        '404':
+          description: Barcode not found
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    BarcodeMetaData:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        metadata:
+          type: object
+          description: Metadata associated with the barcode
+        image:
+          type: string
+          description: Base64-encoded image data for the barcode

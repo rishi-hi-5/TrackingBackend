@@ -50,14 +50,14 @@ public class BarcodeService {
         };
     }
 
-    public Mono<Void> saveBarcode(Mono<SaveBarcodeRequest> saveBarcodeRequestMono) {
+    public Mono<Void> saveOrUpdateBarcode(Mono<SaveBarcodeRequest> saveBarcodeRequestMono) {
         return saveBarcodeRequestMono.flatMap(saveBarcodeRequest -> {
             Map<String,String> map = (Map<String, String>) saveBarcodeRequest.getMetadata();
             String name = map.get("name");
             String description = map.get("description");
+
             BarcodeMetaData barcodeMetaData = BarcodeMetaData
                     .builder()
-                    .id(UUID.fromString(name).toString())
                     .name(name)
                     .description(description)
                     .image(saveBarcodeRequest.getImage())
@@ -69,5 +69,13 @@ public class BarcodeService {
                         return Mono.empty();
                     });
         });
+    }
+
+    public Mono<BarcodeMetaData> getBarcodeByName(String name) {
+        return barcodeRepository.findByName(name);
+    }
+
+    public Mono<Void> deleteBarcodeByName(String name) {
+        return barcodeRepository.deleteByName(name);
     }
 }
