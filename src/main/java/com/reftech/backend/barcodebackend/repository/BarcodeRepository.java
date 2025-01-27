@@ -1,7 +1,7 @@
-package com.reftech.backend.trackingbackend.repository;
+package com.reftech.backend.barcodebackend.repository;
 
 
-import com.reftech.backend.trackingbackend.model.BarcodeMetaData;
+import com.reftech.backend.barcodebackend.model.BarcodeMetaData;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;

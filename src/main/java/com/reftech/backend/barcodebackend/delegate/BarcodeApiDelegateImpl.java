@@ -1,9 +1,7 @@
-package com.reftech.backend.trackingbackend.delegate;
+package com.reftech.backend.barcodebackend.delegate;
 
-import com.reftech.backend.trackingbackend.api.BarcodesApiDelegate;
-import com.reftech.backend.trackingbackend.api.GenerateUniqueBarcodeRequest;
-import com.reftech.backend.trackingbackend.api.SaveBarcodeRequest;
-import com.reftech.backend.trackingbackend.service.BarcodeService;
+import com.reftech.backend.barcodebackend.api.*;
+import com.reftech.backend.barcodebackend.service.BarcodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -34,5 +32,18 @@ public class BarcodeApiDelegateImpl implements BarcodesApiDelegate {
 
         return barcodeService.saveOrUpdateBarcode(saveBarcodeRequest)
                 .map(ResponseEntity::ok);
+    }
+
+    @Override
+    public Mono<ResponseEntity<Void>> deleteBarcodeByName(String name,
+                                                           ServerWebExchange exchange) {
+        return barcodeService.deleteBarcodeByName(name)
+                .map(ResponseEntity::ok);
+    }
+    @Override
+    public Mono<ResponseEntity<BarcodeMetaDataResponse>> findBarcodeByName(String name,
+                                                                    ServerWebExchange exchange) {
+        return barcodeService.findBarcodeByName(name)
+                .map(barcodeMetaData -> ResponseEntity.ok().body(barcodeMetaData));
     }
 }

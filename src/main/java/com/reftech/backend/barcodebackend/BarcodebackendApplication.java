@@ -1,13 +1,13 @@
-package com.reftech.backend.trackingbackend;
+package com.reftech.backend.barcodebackend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TrackingbackendApplication {
+public class BarcodebackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TrackingbackendApplication.class, args);
+		SpringApplication.run(BarcodebackendApplication.class, args);
 	}
 
 }

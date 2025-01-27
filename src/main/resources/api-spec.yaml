@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
-  title: Transport Tracking API
-  description: API documentation for the Transport Tracking system, including barcode management.
+  title: Transport barcode API
+  description: API documentation for the Transport Barcode system
   version: 1.0.0
 servers:
   - url: http://localhost:8080
@@ -112,7 +112,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BarcodeMetaData'
+                $ref: '#/components/schemas/BarcodeMetaDataResponse'
         '404':
           description: Barcode not found
         '500':
@@ -142,7 +142,7 @@ paths:
 
 components:
   schemas:
-    BarcodeMetaData:
+    BarcodeMetaDataResponse:
       type: object
       properties:
         id:
@@ -155,4 +155,5 @@ components:
           description: Metadata associated with the barcode
         image:
           type: string
+          format: byte
           description: Base64-encoded image data for the barcode

@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.reftech.backend</groupId>
-	<artifactId>trackingbackend</artifactId>
+	<artifactId>barcode-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>trackingbackend</name>
+	<name>barcode-backend</name>
 	<description>Demo project for Spring Boot</description>
 	<url />
 	<licenses>
@@ -198,7 +198,7 @@
 						</exclude>
 
 					</excludes>
-					<mainClass>com.reftech.backend.trackingbackend.TrackingbackendApplication</mainClass>
+					<mainClass>com.reftech.backend.barcodebackend.BarcodebackendApplication</mainClass>
 
 				</configuration>
 			</plugin>
@@ -216,9 +216,9 @@
 							<inputSpec>${project.basedir}/src/main/resources/api-spec.yaml</inputSpec>
 							<generatorName>spring</generatorName>
 							<output>${project.build.directory}/generated-sources/openapi</output>
-							<packageName>com.reftech.backend.trackingbackend.api</packageName>
-							<apiPackage>com.reftech.backend.trackingbackend.api</apiPackage>
-							<modelPackage>com.reftech.backend.trackingbackend.api</modelPackage>
+							<packageName>com.reftech.backend.barcodebackend.api</packageName>
+							<apiPackage>com.reftech.backend.barcodebackend.api</apiPackage>
+							<modelPackage>com.reftech.backend.barcodebackend.api</modelPackage>
 							<generatorName>spring</generatorName>
 							<generateApiTests>false</generateApiTests>
 							<generateModelTests>false</generateModelTests>

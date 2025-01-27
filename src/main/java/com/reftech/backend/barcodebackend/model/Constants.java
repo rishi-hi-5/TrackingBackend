@@ -1,4 +1,4 @@
-package com.reftech.backend.trackingbackend.model;
+package com.reftech.backend.barcodebackend.model;
 
 import com.google.zxing.BarcodeFormat;
 
