@@ -46,11 +46,11 @@ spec:
               protocol: TCP
           env:
             - name: SPRING_DATASOURCE_URL
-              value: { { .Values.env.SPRING_DATASOURCE_URL } }
+              value: {{ .Values.env.SPRING_DATASOURCE_URL }}
             - name: SPRING_DATASOURCE_USERNAME
-              value: { { .Values.env.SPRING_DATASOURCE_USERNAME } }
+              value: {{ .Values.env.SPRING_DATASOURCE_USERNAME }}
             - name: SPRING_DATASOURCE_PASSWORD
-              value: { { .Values.env.SPRING_DATASOURCE_PASSWORD } }
+              value: {{ .Values.env.SPRING_DATASOURCE_PASSWORD }}
           {{- with .Values.livenessProbe }}
           livenessProbe:
             {{- toYaml . | nindent 12 }}
