@@ -96,7 +96,7 @@ resources:
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
   httpGet:
-    path: /tracking/actuator/health
+    path: /barcode/actuator/health
     port: 8080
   initialDelaySeconds: 30
   periodSeconds: 10
@@ -105,7 +105,7 @@ livenessProbe:
 
 readinessProbe:
   httpGet:
-    path: /tracking/actuator/health
+    path: /barcode/actuator/health
     port: 8080
   initialDelaySeconds: 30
   periodSeconds: 10
@@ -140,6 +140,6 @@ tolerations: []
 affinity: {}
 
 env:
-  SPRING_DATASOURCE_URL: "r2dbc:postgresql://{{ .Release.Name }}-database:5432/trackingdb"
+  SPRING_DATASOURCE_URL: "r2dbc:postgresql://{{ .Release.Name }}-database:5432/barcodedb"
   SPRING_DATASOURCE_USERNAME: "postgres"
   SPRING_DATASOURCE_PASSWORD: "root"

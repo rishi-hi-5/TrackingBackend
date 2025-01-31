@@ -30,7 +30,7 @@ spec:
           image: postgres:15
           env:
             - name: POSTGRES_DB
-              value: "trackingdb"
+              value: "barcodedb"
             - name: POSTGRES_USER
               value: "postgres"
             - name: POSTGRES_PASSWORD
@@ -47,7 +47,7 @@ spec:
                 - "-U"
                 - "postgres"
                 - "-d"
-                - "trackingdb"
+                - "barcodedb"
             initialDelaySeconds: 30
             periodSeconds: 10
             failureThreshold: 3
@@ -58,7 +58,7 @@ spec:
                 - "-U"
                 - "postgres"
                 - "-d"
-                - "trackingdb"
+                - "barcodedb"
             initialDelaySeconds: 5
             periodSeconds: 10
             failureThreshold: 3
